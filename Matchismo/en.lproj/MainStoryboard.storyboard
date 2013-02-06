@@ -317,6 +317,8 @@
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" id="58l-UB-Rsv">
                                 <rect key="frame" x="99" y="429" width="203" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="minimumTrackTintColor" red="0.019141969736969546" green="0.53657126913265307" blue="0.2487214356288977" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="maximumTrackTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="slideThruHistory:" destination="2" eventType="valueChanged" id="4zv-vi-Ivx"/>
                                 </connections>
