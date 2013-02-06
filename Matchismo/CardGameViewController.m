@@ -39,7 +39,7 @@
     for (UIButton *cardButton in self.cardButtons) {
         
         // We assume that the cards in the model are PlayingCards,
-        // because we need card.faceImage of PlayingCard
+        // because we need card.faceImage from PlayingCard
         PlayingCard *card = (PlayingCard *)[self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
         
         [cardButton setTitle:card.contents forState:UIControlStateSelected];
@@ -50,15 +50,14 @@
         cardButton.alpha = card.isUnplayable ? 0.3 : 0.97;
         
         if (card.isFaceUp) {
-            // Shrinking cardFaceImage the size of the button
+            // Shrinking cardFaceImage to the size of the button
             UIImage *cardFaceImage = [Utilities imageWithImage:card.faceImage convertToSize:[self.cardButtons[0] size]];
             // and then settings it as an image for the button
+            // *makes it look a bit better
             [cardButton setImage:cardFaceImage forState:UIControlStateNormal];
         }
         else {
-            // Shrinking cardBackImage the size of the button
             UIImage *cardBackImage = [Utilities imageWithImage:[UIImage imageNamed:@"card-back.png"] convertToSize:[self.cardButtons[0] size]];
-            // and then settings it as an image for the button
             [cardButton setImage:cardBackImage forState:UIControlStateNormal];
         }
 

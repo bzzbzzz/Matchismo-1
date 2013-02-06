@@ -11,10 +11,8 @@
 
 @interface CardMatchingGame()
 
-// Keeps track of how many cards
-// are being matched this game
+// Keeps track of how many cards to match
 @property (nonatomic) enum GameMode gameMode;
-
 @property (nonatomic, readwrite) NSArray *history;
 @property (nonatomic, readwrite) int score;
 @property (nonatomic, readwrite) int flipCount;
@@ -47,17 +45,17 @@
         gameOver = YES;
     }
     // If there is more than 8(worst case for 3 card match)
-    // cards still ready to be played, game can not be over
+    // avalable cards, game can not be over
     else if ([unplayedCards count] > 8) {
         gameOver = NO;
     }
     else {
         
-        // Dictionaries will hold the number of avalable suits and ranks
+        // Dictionaries will hold the amounts of avalable suits and ranks
         NSMutableDictionary *ranks = [[NSMutableDictionary alloc] init];
         NSMutableDictionary *suits = [[NSMutableDictionary alloc] init];
         
-        // Initiating
+        // Initiating with 0s
         for (NSString *rank in [PlayingCard rankStrings]) {
             [ranks setObject:@0 forKey:rank];
         }
@@ -65,7 +63,9 @@
             [suits setObject:@0 forKey:suit];
         }
         
-        // Filling with values
+        // Filling the values
+        // e.g. if there are 3 hears avalable
+        // key:value will look like this: @"♥":@3
         for (PlayingCard *card in unplayedCards) {
             NSNumber *rankNum = [ranks objectForKey:[PlayingCard rankStrings][card.rank]];
             NSNumber *suitNum = [suits objectForKey:card.suit];
@@ -76,8 +76,8 @@
         }
         
 
-        // If there are enouch equal rank or suits for
-        // a match then the game can no be over
+        // If there is enough equal ranks or suits for
+        // a match, then the game can not be over
         for (NSString *key in suits) {
             if ([[suits objectForKey:key] intValue] >= self.gameMode) {
                 gameOver = NO;
@@ -93,8 +93,8 @@
             }
         }
     }
-    // Reacting to game over
     if (gameOver) {
+        // Ending the game
         self.flipCost = 0;
         if (![[self.history lastObject] isEqualToString:@"Game Over"]) {
             self.history = [self.history arrayByAddingObject:@"Game Over"];
@@ -130,6 +130,7 @@
                     [otherCards addObject:otherCard];
                     
                     // gameMode = 2/3 for twoCard/threeCard
+                    // this makes it work for any type of game (cards to match)
                     if (otherCards.count == self.gameMode - 1)
                     {
                         int matchScore = [card match:otherCards];
@@ -140,6 +141,7 @@
                             card.unplayable = YES;
                             
                             self.score += matchScore * self.matchBonus;
+                            // note: one %@ for all other cards
                             status = [NSString stringWithFormat:@"matched %@ %@ for %d points",
                                       card,
                                       [otherCards componentsJoinedByString:@" "],
