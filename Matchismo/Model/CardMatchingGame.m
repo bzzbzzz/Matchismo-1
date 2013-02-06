@@ -74,7 +74,6 @@
             [ranks setObject:rankNum forKey:[PlayingCard rankStrings][card.rank]];
             [suits setObject:suitNum forKey:card.suit];
         }
-        
 
         // If there is enough equal ranks or suits for
         // a match, then the game can not be over
@@ -100,6 +99,7 @@
             self.history = [self.history arrayByAddingObject:@"Game Over"];
         }
         for (Card *card in unplayedCards) {
+            // Forcing cards to stay faceUp so the flip logic will be skipped
             card.faceUp = YES;
         }
     }
@@ -164,11 +164,13 @@
         }
         card.faceUp = !card.isFaceUp;
     }
+    if (status) {
+        // After game is over status will always be nil,
+        // because of if(!card.isFaceUp)
+        self.history = [self.history arrayByAddingObject:status];
+    }
     if (![self isGameOver]) {
         self.flipCount++;
-        if (status) {
-            self.history = [self.history arrayByAddingObject:status];
-        }
     }
 }
 

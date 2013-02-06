@@ -118,7 +118,6 @@
 		8317FD8C16C1C05000BCDFBE /* deal-deck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8317FD8A16C1C05000BCDFBE /* deal-deck@2x.png */; };
 		8317FD8D16C1C05000BCDFBE /* deal-deck.png in Resources */ = {isa = PBXBuildFile; fileRef = 8317FD8B16C1C05000BCDFBE /* deal-deck.png */; };
 		8317FD9016C1CB0700BCDFBE /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8317FD8F16C1CB0700BCDFBE /* Utilities.m */; };
-		83B065A116BBEEC600C27FFE /* CardBack.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 83B065A016BBEEC600C27FFE /* CardBack.jpg */; };
 		83EEBE4816B93A26002181E3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EEBE4716B93A26002181E3 /* UIKit.framework */; };
 		83EEBE4A16B93A26002181E3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EEBE4916B93A26002181E3 /* Foundation.framework */; };
 		83EEBE4C16B93A26002181E3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EEBE4B16B93A26002181E3 /* CoreGraphics.framework */; };
@@ -250,7 +249,6 @@
 		8317FD8B16C1C05000BCDFBE /* deal-deck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "deal-deck.png"; sourceTree = "<group>"; };
 		8317FD8E16C1CB0700BCDFBE /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		8317FD8F16C1CB0700BCDFBE /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
-		83B065A016BBEEC600C27FFE /* CardBack.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CardBack.jpg; sourceTree = "<group>"; };
 		83EEBE4416B93A26002181E3 /* Matchismo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matchismo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83EEBE4716B93A26002181E3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		83EEBE4916B93A26002181E3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -470,7 +468,6 @@
 			children = (
 				8317FD8E16C1CB0700BCDFBE /* Utilities.h */,
 				8317FD8F16C1CB0700BCDFBE /* Utilities.m */,
-				83B065A016BBEEC600C27FFE /* CardBack.jpg */,
 				8317FCAF16C1B36100BCDFBE /* Images */,
 				83EEBE5616B93A26002181E3 /* CardGameAppDelegate.h */,
 				83EEBE5716B93A26002181E3 /* CardGameAppDelegate.m */,
@@ -559,7 +556,6 @@
 				83EEBE5C16B93A26002181E3 /* Default@2x.png in Resources */,
 				83EEBE5E16B93A26002181E3 /* Default-568h@2x.png in Resources */,
 				83EEBE6116B93A26002181E3 /* MainStoryboard.storyboard in Resources */,
-				83B065A116BBEEC600C27FFE /* CardBack.jpg in Resources */,
 				8317FD1C16C1B36100BCDFBE /* table-background.png in Resources */,
 				8317FD1D16C1B36100BCDFBE /* table-background@2x.png in Resources */,
 				8317FD1E16C1B36100BCDFBE /* club-1.png in Resources */,

@@ -22,7 +22,7 @@ enum GameMode {
 @property (nonatomic, readonly) int flipCount;
 
 - (id)initWithCardCount:(NSUInteger)cardCount andGameMode:(enum GameMode)gameMode usingDeck:(Deck *)deck;
-
+- (BOOL)isGameOver;
 
 - (void)flipCardAtIndex:(NSUInteger)index;
 - (Card *)cardAtIndex:(NSUInteger)index;

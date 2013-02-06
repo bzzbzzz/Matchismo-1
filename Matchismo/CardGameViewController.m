@@ -12,7 +12,7 @@
 #import "PlayingCard.h" 
 #import "Utilities.h"
 
-@interface CardGameViewController ()
+@interface CardGameViewController () <UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UISlider *historySlider;
 @property (nonatomic, strong) CardMatchingGame *game;
@@ -65,17 +65,44 @@
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
 }
 
-#pragma mark - Actions
-
-// Resets UI and starts a new game
-- (IBAction)deal:(id)sender {
+- (void)newGame
+{
+    // Move parts of UI to appropriate state
     self.gameModeSegmentControl.enabled = YES;
     self.gameModeSegmentControl.alpha = 1.0;
     self.historySlider.enabled = NO;
     self.historySlider.alpha = 0.0;
     
-    self.game = nil; // note: new game creates @ accessor for self.game
+    // Discard current game
+    self.game = nil; // note: new game will be created @ accessor for self.game
     [self updateUI];
+}
+
+#pragma mark - Actions
+
+- (IBAction)deal:(id)sender {
+    
+    // If game is over or hasn't started yet, 
+    // then just we just start a new game
+    // note: every game starts with one item in history (intro text)
+    if ([self.game isGameOver] || [[self.game history] count] == 1) {
+        [self newGame];
+    }
+    
+    // If game wasn't over we promt user
+    // if he agrees to lose current games data
+    else {
+        // note: code below just pops the alert
+        // logic is in UIAlertViewDelegate method (it's same as above)
+        // (#pragma mark - UIAlertViewDelegate)
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:@"Deal new cards?"
+                              message:@"Current score will be lost!"
+                              delegate:self
+                              cancelButtonTitle:@"No"
+                              otherButtonTitles:@"Yes", nil];
+        [alert show];
+    }
 }
 
 - (IBAction)slideThruHistory:(UISlider *)sender {
@@ -99,8 +126,21 @@
     
     // Updating the Model
     [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
-    // and syncing it with view
+    // and syncing it with the View
     [self updateUI];
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    // If user clicks "Yes" (no = 0, yes = 1)
+    if (buttonIndex == 1)
+    {
+        [self newGame];
+    }
+    // Dismissing alert window
+    [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
 }
 
 #pragma mark - Accessors
